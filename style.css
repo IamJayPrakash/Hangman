@@ -1,0 +1,263 @@
+html, body {
+    height: 100%;
+}
+
+* {
+    box-sizing: border-box;
+    cursor: default;
+}
+
+body {
+    background-color: #16262E;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Arial, sans serif;
+    color: #F7FFF7;
+    font-size: 1vw;
+    overflow: hidden;
+}
+
+div.hangman {
+    margin: auto;
+    width: 86vw;
+    max-width: 1920px;
+    height: 48vw;
+    max-height: 1080px;
+    background-color: #000;
+    background-image: url('https://www.instant-gaming.com/images/products/1292/screenshot/1292-1.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 1vmin;
+    position: relative;
+    box-shadow: 0.2em 0.2em 1em rgba(0, 0, 0, 0.5);
+    font-size: 2vw;
+    overflow: hidden;
+}
+
+div.hangman-panels {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+div.hangman-center {
+    flex-shrink: 1;
+    flex-grow: 2;
+    position: relative;
+}
+div.hangman-red {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #f00;
+    background: linear-gradient(90deg, #f00, #f00, #f00, #f00, #f00, #f00, #f00, rgba(255, 0, 0, 0));
+    opacity: 0.2;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 500ms, opacity 500ms;
+    transition-timing-function: ease-in-out;
+}
+
+div.hangman-panel {
+    background-color: rgba(60, 122, 137, 0.3);
+    border-radius: 1vmin;
+    padding: 0.2em;
+    width: 100%;
+}
+
+div.hangman-header {
+    flex-shrink: 2;
+    display: flex;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    font-size: 2vw;
+}
+
+div.hangman-title {
+    flex-shrink: 1;
+    letter-spacing: 0.4em;
+    color: rgba(247, 255, 247, 0.7);
+    width: 100%;
+}
+
+div.hangman-init-game {
+    flex-shrink: 2;
+    white-space: nowrap;
+}
+
+div.hangman-word {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 6vw;
+    font-family: monospace;
+    white-space: nowrap;
+    text-shadow: 1vw 1vw 1vw #16262E;
+    letter-spacing: 0.3em;
+    display: flex;
+    opacity: 0.7;
+}
+
+div.hangman-hint, div.hangman-comment {
+    position: absolute;
+    font-size: 1.5vw;
+    white-space: normal;
+}
+
+div.hangman-comment {
+    left: 31%;
+    width: 50%;
+    top: 67%;
+    color: hsl(0, 0%, 80%);
+    text-shadow: 0.2vw 0.2vw 0.3vw hsl(0, 0%, 20%);
+}
+
+div.hangman-hint-1 {
+    left: 10%;
+    width: 80%;
+    top: 18%;
+    color: hsl(0, 0%, 75%);
+    text-shadow: 0.2vw 0.2vw 0.3vw #000;
+}
+
+div.hangman-hint-2 {
+    left: 40%;
+    width: 50%;
+    top: 85%;
+    color: hsl(0, 0%, 50%);
+    text-shadow: 0.2vw 0.2vw 0.3vw hsl(0, 0%, 20%);
+}
+
+div.hangman-keyboard {
+    flex-shrink: 2;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+div.buttons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.button {
+    border-radius: 0.2em;
+    background-color: hsla(192, 39%, 39%, 0.4);
+    cursor: pointer;
+    color: hsl(192, 39%, 50%);
+    flex-grow: 1;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 300ms, background-color 300ms, color 300ms;
+}
+
+div.button, div.hangman-title {
+    margin: 0.05em;
+    padding: 0.05em 0.4em;
+}
+
+div.button:hover {
+    background-color: hsla(192, 39%, 79%, 0.4);
+    color: hsl(192, 39%, 70%);
+    opacity: 1;
+    transition: opacity 300ms, background-color 300ms, color 300ms;
+}
+
+div.key {
+    font-family: monospace;
+}
+
+div.button.disabled {
+    opacity: 0.2;
+    transition: opacity 500ms;
+}
+
+@keyframes swing330 {
+    15% {
+        transform: translate(1px, 0px);
+    }
+    30% {
+        transform: translate(-1px, -1px);
+    }
+    50% {
+        transform: translate(1px, 1px);
+    }
+    65% {
+        transform: translate(-1px, 0px);
+    }
+    80% {
+        transform: translate(1px, -1px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes swing331 {
+    15% {
+        transform: translate(1px, 0px);
+    }
+    30% {
+        transform: translate(-1px, 0px);
+    }
+    50% {
+        transform: translate(1px, 1px);
+    }
+    65% {
+        transform: translate(1px, -1px);
+    }
+    80% {
+        transform: translate(-1px, -1px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes swing660 {
+    15% {
+        transform: translate(2px, 0px);
+    }
+    30% {
+        transform: translate(-3px, -1px);
+    }
+    50% {
+        transform: translate(3px, 2px);
+    }
+    65% {
+        transform: translate(-3px, 0px);
+    }
+    80% {
+        transform: translate(2px, -1px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes swing661 {
+    15% {
+        transform: translate(-3px, -1px);
+    }
+    30% {
+        transform: translate(2px, 0px);
+    }
+    50% {
+        transform: translate(-3px, 0px);
+    }
+    65% {
+        transform: translate(3px, 2px);
+    }
+    80% {
+        transform: translate(2px, -1px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
